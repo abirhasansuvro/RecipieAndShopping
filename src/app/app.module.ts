@@ -8,9 +8,10 @@ import { RecipieListComponent } from './recipies/recipie-list/recipie-list.compo
 import { RecipieDetailComponent } from './recipies/recipie-detail/recipie-detail.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
+import { RecipieItemComponent } from './recipies/recipie-list/recipie-item/recipie-item.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, RecipiesComponent, RecipieListComponent, RecipieDetailComponent, ShoppingListComponent, ShoppingEditComponent],
+  declarations: [AppComponent, HeaderComponent, RecipiesComponent, RecipieListComponent, RecipieDetailComponent, ShoppingListComponent, ShoppingEditComponent, RecipieItemComponent],
   imports: [BrowserModule],
   providers: [],
   bootstrap: [AppComponent]
