@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Recipie } from "../recipie.model";
+import { RecipieService } from "../recipie.service";
 
 @Component({
   selector: "app-recipie-list",
@@ -7,15 +8,11 @@ import { Recipie } from "../recipie.model";
   styleUrls: ["./recipie-list.component.css"]
 })
 export class RecipieListComponent implements OnInit {
-  recipies: Recipie[] = [
-    new Recipie(
-      "Kabuli Polao",
-      "A tasty recipie made by afgan people",
-      "https://media-cdn.tripadvisor.com/media/photo-s/0e/b0/ef/b1/20170317-142002-largejpg.jpg"
-    )
-  ];
+  recipies: Recipie[] = [];
 
-  constructor() {}
+  constructor(private recipieService: RecipieService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.recipies = this.recipieService.getRecipies();
+  }
 }

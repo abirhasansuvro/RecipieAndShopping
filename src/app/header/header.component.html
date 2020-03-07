@@ -16,11 +16,11 @@
       (window:resize)="collapsed = true"
     >
       <ul class="nav navbar-nav">
-        <li><a href="#">Recipies</a></li>
-        <li><a href="#">Shopping List</a></li>
+        <li><a href="#" (click)="changeHeader(true)">Recipies</a></li>
+        <li><a href="#" (click)="changeHeader(false)">Shopping List</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
+        <li class="dropdown" appDropdown>
           <a href="#" role="button" class="dropdown-toogle"
             >Manage <span class="caret"></span
           ></a>
