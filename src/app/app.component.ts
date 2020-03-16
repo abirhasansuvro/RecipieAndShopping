@@ -1,4 +1,4 @@
-import { Component, ElementRef } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
   selector: "app-root",
@@ -7,8 +7,4 @@ import { Component, ElementRef } from "@angular/core";
 })
 export class AppComponent {
   title = "RecipieWithShopping";
-  is_recipie: boolean = true;
-  selectHeaderElement(event: boolean) {
-    this.is_recipie = event;
-  }
 }

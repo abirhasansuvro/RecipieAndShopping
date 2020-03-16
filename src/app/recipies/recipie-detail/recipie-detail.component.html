@@ -20,8 +20,12 @@
             >To Shopping List</a
           >
         </li>
-        <li><a href="#">Edit Recipie </a></li>
-        <li><a href="#">Delete Recipie</a></li>
+        <li>
+          <a style="cursor:pointer;" [routerLink]="['/recipies', index, 'edit']"
+            >Edit Recipie
+          </a>
+        </li>
+        <li><a style="cursor:pointer;">Delete Recipie</a></li>
       </ul>
     </div>
   </div>

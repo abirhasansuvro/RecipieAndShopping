@@ -1,4 +1,8 @@
-<app-header (showHeaderOnSelect)="selectHeaderElement($event)"></app-header>
-
-<app-recipies *ngIf="is_recipie"></app-recipies>
-<app-shopping-list *ngIf="is_recipie == false"></app-shopping-list>
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
