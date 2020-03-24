@@ -6,6 +6,7 @@ import { RecipieItemComponent } from "./recipies/recipie-list/recipie-item/recip
 import { RecipieDetailComponent } from "./recipies/recipie-detail/recipie-detail.component";
 import { RecipieStartComponent } from "./recipies/recipie-start/recipie-start.component";
 import { RecipieEditComponent } from "./recipies/recipie-edit/recipie-edit.component";
+import { RecipieResolverService } from './recipies/recipie-resolver.service';
 const routes: Routes = [
   { path: "", redirectTo: "/recipies", pathMatch: "full" },
   {
@@ -14,8 +15,8 @@ const routes: Routes = [
     children: [
       { path: "", component: RecipieStartComponent },
       { path: "new", component: RecipieEditComponent },
-      { path: ":id", component: RecipieDetailComponent },
-      { path: ":id/edit", component: RecipieEditComponent }
+      { path: ":id", component: RecipieDetailComponent,resolve:[RecipieResolverService] },
+      { path: ":id/edit", component: RecipieEditComponent,resolve:[RecipieResolverService] }
     ]
   },
   { path: "shopping-list", component: ShoppingListComponent }

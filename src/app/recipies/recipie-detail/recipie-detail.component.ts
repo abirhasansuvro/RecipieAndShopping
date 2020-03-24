@@ -28,4 +28,8 @@ export class RecipieDetailComponent implements OnInit {
   addToShoppingList() {
     this.recipieService.addToShoppingList(this.recipie.ingredients);
   }
+  
+  onDelete(){
+    this.recipieService.deleteRecipie(this.index);
+  }
 }
