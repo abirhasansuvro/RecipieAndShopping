@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { RecipieService } from '../recipies/recipie.service';
 import { Recipie } from '../recipies/recipie.model';
-import {map,tap} from 'rxjs/operators';
+import {map,tap, take, exhaustMap} from 'rxjs/operators';
+import { AuthService } from '../auth/auth.service';
 @Injectable({
     providedIn:'root'
 })
 export class DataStorageService{
-    constructor(private http:HttpClient,private recipieService:RecipieService){}
+    constructor(private http:HttpClient,private recipieService:RecipieService,private authService:AuthService){}
 
     storeRecipies(){
         const recipies=this.recipieService.getRecipies();
@@ -19,8 +20,7 @@ export class DataStorageService{
     }
 
     fetchRecipies(){
-        return this.http.get<Recipie[]>('https://recipiewithshopping.firebaseio.com/recipies.json').
-        pipe(
+        return this.http.get<Recipie[]>('https://recipiewithshopping.firebaseio.com/recipies.json').pipe(
             map(
                 data=>{
                     return data.map(

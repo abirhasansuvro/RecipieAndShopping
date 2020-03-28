@@ -1,39 +1,34 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import {HttpClientModule} from '@angular/common/http';
+import { ReactiveFormsModule } from "@angular/forms";
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { AppRoutingModule } from "./app-routing.module";
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
-import { RecipiesComponent } from "./recipies/recipies.component";
-import { RecipieListComponent } from "./recipies/recipie-list/recipie-list.component";
-import { RecipieDetailComponent } from "./recipies/recipie-detail/recipie-detail.component";
-import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
-import { ShoppingEditComponent } from "./shopping-list/shopping-edit/shopping-edit.component";
-import { RecipieItemComponent } from "./recipies/recipie-list/recipie-item/recipie-item.component";
-
-import { DropdownDirective } from "./shared/dropdown.directive";
 import { ShoppingListService } from "./shopping-list/shopping-list.service";
-import { AppRoutingModule } from "./app-routing.module";
-import { RecipieStartComponent } from './recipies/recipie-start/recipie-start.component';
-import { RecipieEditComponent } from './recipies/recipie-edit/recipie-edit.component';
+import { AuthComponent } from './auth/auth.component';
+import { AuthIterceptorService } from './auth/auth-interceptor.service';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    RecipiesComponent,
-    RecipieListComponent,
-    RecipieDetailComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
-    RecipieItemComponent,
-    DropdownDirective,
-    RecipieStartComponent,
-    RecipieEditComponent
+    AuthComponent
   ],
-  imports: [BrowserModule, FormsModule,ReactiveFormsModule,HttpClientModule, AppRoutingModule],
-  providers: [ShoppingListService],
+  imports: [
+    BrowserModule, 
+    ReactiveFormsModule,
+    HttpClientModule, 
+    AppRoutingModule,
+    SharedModule
+  ],
+  providers: [ShoppingListService,
+    {
+      provide:HTTP_INTERCEPTORS,useClass:AuthIterceptorService,multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
